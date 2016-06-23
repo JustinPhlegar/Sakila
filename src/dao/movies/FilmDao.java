@@ -1,5 +1,5 @@
 package dao.movies;
-import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import dao.Database;
 import dto.movies.Film;
 public class FilmDao extends Database{
-	public ArrayList getFilms(String sql) throws Exception
+	public ArrayList<Film> getFilms(String sql) throws Exception
 	{
-		ArrayList filmData = new ArrayList();
+		ArrayList<Film> filmData = new ArrayList<Film>();
 		try
 		{
 			PreparedStatement ps = getConnection().prepareStatement(sql);

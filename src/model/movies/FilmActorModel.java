@@ -1,15 +1,15 @@
 package model.movies;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 
 import dao.movies.FilmActorDao;
+import dto.movies.FilmActor;
 
-public class FilmActorManager {
+public class FilmActorModel {
 
-	public ArrayList getFilmActors() throws Exception {
+	public ArrayList<FilmActor> getFilmActors() throws Exception {
 		String sql = "SELECT actor_id, film_id, last_update FROM sakila.film_actor ORDER BY actor_id ASC";
-		ArrayList messages = null;
+		ArrayList<FilmActor> messages = null;
 		try {
 			// Here you can validate before connecting DAO class, eg. User session condition 
 			FilmActorDao filmActorDao= new FilmActorDao();

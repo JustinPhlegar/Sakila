@@ -1,5 +1,4 @@
 package dao.movies;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -7,9 +6,9 @@ import java.util.ArrayList;
 import dao.Database;
 import dto.movies.Actor;
 public class ActorDao extends Database{
-	public ArrayList getActors( String sql) throws Exception
+	public ArrayList<Actor> getActors( String sql) throws Exception
 	{
-		ArrayList actorData = new ArrayList();
+		ArrayList<Actor> actorData = new ArrayList<Actor>();
 		try
 		{
 			PreparedStatement ps = getConnection().prepareStatement(sql);
@@ -33,7 +32,6 @@ public class ActorDao extends Database{
 	
 	public Actor getActor(String sql) throws Exception
 	{
-		//ArrayList actorData = new ArrayList();
 		try
 		{
 			PreparedStatement ps =  getConnection().prepareStatement(sql);
@@ -46,7 +44,6 @@ public class ActorDao extends Database{
 				actor.setFirst_Name(rs.getString("first_name"));
 				actor.setLast_Name(rs.getString("last_name"));
 				actor.setLast_Update(rs.getString("last_update"));
-				//actorData.add(actor);
 			}
 			return actor;
 		}
