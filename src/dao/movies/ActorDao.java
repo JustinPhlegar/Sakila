@@ -36,15 +36,13 @@ public class ActorDao extends Database{
 		{
 			PreparedStatement ps =  getConnection().prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
+			rs.first();
+			
 			Actor actor = new Actor();
-			while(rs.next())
-			{
-				
-				actor.setActor_Id(rs.getInt("actor_Id"));
-				actor.setFirst_Name(rs.getString("first_name"));
-				actor.setLast_Name(rs.getString("last_name"));
-				actor.setLast_Update(rs.getString("last_update"));
-			}
+			actor.setActor_Id(rs.getInt("actor_Id"));
+			actor.setFirst_Name(rs.getString("first_name"));
+			actor.setLast_Name(rs.getString("last_name"));
+			actor.setLast_Update(rs.getString("last_update"));
 			return actor;
 		}
 		catch(Exception e)
