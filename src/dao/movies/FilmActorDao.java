@@ -1,0 +1,33 @@
+package dao.movies;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import dao.Database;
+import dto.movies.FilmActor;
+public class FilmActorDao extends Database{
+	public ArrayList getActors( String sql) throws Exception
+	{
+		ArrayList filmActorData = new ArrayList();
+		try
+		{
+			PreparedStatement ps = getConnection().prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				FilmActor filmActor = new FilmActor();
+				filmActor.setActor_id(rs.getInt("actor_id"));
+				filmActor.setFilm_id(rs.getInt("film_id"));
+				filmActor.setLast_update(rs.getString("last_update"));
+				filmActorData.add(filmActor);
+			}
+			return filmActorData;
+		}
+		catch(Exception e)
+		{
+			throw e;
+		}
+	}
+
+}
